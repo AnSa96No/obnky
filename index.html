@@ -1,0 +1,87 @@
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./custom.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./images/book.png">
+
+    <title>勉強記録アプリ</title>
+
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">勉強記録アプリ</a>
+            <!-- Menuボタン(id="navbarSupportedContent"を開閉する) -->
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapseする範囲(id="navbarSupportedContent"が開閉する範囲) -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./pages/record.html">勉強記録</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            その他
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+
+        <!-- 勉強教材の入力 -->
+        <div class="mb-3">
+            <label for="studyMaterial" class="form-label">勉強教材</label>
+            <input type="text" class="form-control" id="studyMaterial" list="studyMaterialSuggestions" placeholder="勉強している教材名を入力">
+            <datalist id="studyMaterialSuggestions">
+                <!-- サジェスト候補がJavaScriptで追加される -->
+            </datalist>
+        </div>
+
+        <!-- 勉強時間の入力 -->
+        <div class="mb-3">
+            <label for="studyTime" class="form-label">勉強時間 (分)</label>
+            <input type="number" autocomplete="off" class="form-control" id="studyTime" placeholder="勉強時間を入力">
+        </div>
+
+        <!-- 教材ごとのメモの入力 -->
+        <div class="mb-3">
+            <label for="studyNote" class="form-label">メモ</label>
+            <textarea class="form-control" id="studyNote" rows="3" placeholder="教材に関するメモを入力"></textarea>
+        </div>
+
+        <!-- 勉強記録の追加ボタン -->
+        <button id="addRecordBtn" class="btn btn-primary">記録を追加</button>
+
+    </div>
+
+    <!-- Javascript -->
+    <script src="./main.js"></script>
+    <script src="./lib/js/bootstrap.min.js"></script>
+
+</body>
+</html>

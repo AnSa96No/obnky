@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../custom.css">
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="../images/book.png">
+
+    <title>勉強記録アプリ</title>
+
+    <!-- ナビゲーションバー -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">勉強記録アプリ</a>
+            <!-- Menuボタン(id="navbarSupportedContent"を開閉する) -->
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapseする範囲(id="navbarSupportedContent"が開閉する範囲) -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../index.html">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active disabled" href="#">勉強記録</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            その他
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+        <!-- 勉強メーター -->
+        <h4>合計勉強時間: <span id="totalStudyTimeDisplay">0</span> </h4>
+
+        <h4 class="mt-5">勉強メーター</h4>
+        <div class="meter mb-3">
+            <div id="studyMeter" class="meter-progress"></div>
+        </div>
+
+        <!-- 勉強履歴 -->
+        <h4>勉強履歴</h4>
+        <ul id="historyList" class="list-group"></ul>
+    </div>
+
+    <!-- Javascript -->
+    <script src="../main.js"></script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+</body>
+</html>
