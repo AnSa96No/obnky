@@ -1,3 +1,5 @@
+console.log("timer.js load");
+
 // タイマー機能の変数
 let startTime;
 let elapsedTime = 0;
@@ -7,10 +9,11 @@ let timerInterval;
 const startButton = document.getElementById("instrumentation_start");
 const suspendButton = document.getElementById("suspend");
 
-// 分表示を更新する関数
+// 分秒表示を更新する関数
 function updateDisplayTime() {
-    const minutes = Math.floor(elapsedTime / 60000);
-    document.getElementById("study_time").textContent = `${minutes}分`;
+    const minutes = Math.floor(elapsedTime / 60000); // 分
+    const seconds = Math.floor((elapsedTime % 60000) / 1000); // 秒
+    document.getElementById("study_time").textContent = `${minutes}分${seconds}秒`;
 }
 
 // ボタンのスタイルをリセットする関数
@@ -23,16 +26,15 @@ function resetButtonStyles() {
 
 // 計測開始ボタン
 startButton.addEventListener("click", () => {
-    // タイマーが停止中の場合にのみスタートする
+    console.log("計測開始");
     if (!timerInterval) {
-        startTime = Date.now() - elapsedTime; // 開始時に経過時間を考慮
+        startTime = Date.now() - elapsedTime;
         timerInterval = setInterval(() => {
             elapsedTime = Date.now() - startTime;
             updateDisplayTime();
         }, 1000);
 
-        // ボタンの色を変更
-        resetButtonStyles(); // 両方のボタンの色をリセット
+        resetButtonStyles();
         startButton.classList.remove("btn-primary");
         startButton.classList.add("btn-success");
     }
@@ -40,11 +42,11 @@ startButton.addEventListener("click", () => {
 
 // 一時停止ボタン
 suspendButton.addEventListener("click", () => {
+    console.log("一時停止");
     if (timerInterval) {
         clearInterval(timerInterval);
         timerInterval = null;
 
-        // ボタンの色を変更
         resetButtonStyles();
         suspendButton.classList.remove("btn-primary");
         suspendButton.classList.add("btn-success");
@@ -54,11 +56,10 @@ suspendButton.addEventListener("click", () => {
 // 計測終了ボタン
 document.getElementById("instrumentation_end").addEventListener("click", () => {
     clearInterval(timerInterval);
-    const minutes = Math.floor(elapsedTime / 60000);
-    localStorage.setItem("studyTime", minutes);
+    const minutes = Math.floor(elapsedTime / 60000); // 分単位に変換
+    localStorage.setItem("studyTime", minutes); // 分のみを保存
     elapsedTime = 0;
     startTime = null;
 
-    // ボタンのスタイルをリセット
     resetButtonStyles();
 });
