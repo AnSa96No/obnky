@@ -154,7 +154,6 @@
 // // ページ読み込み時にローカルストレージからデータをロード
 // window.addEventListener('load', loadFromLocalStorage);
 
-
 console.log("main.js load");
 
 // ページ読み込み時にローカルストレージからデータをロード
@@ -240,11 +239,11 @@ document.getElementById('addRecordBtn').addEventListener("click", () => {
         totalStudyTime += time;
 
         saveToLocalStorage();
-        addRecordToHistory(record); // 履歴リストに表示
 
-        document.getElementById("studyMaterial").value = '';
-        document.getElementById("studyTime").value = '';
-        document.getElementById("studyNote").value = '';
+        // 入力フィールドをクリア
+        document.getElementById('studyMaterial').value = '';
+        document.getElementById('studyTime').value = '';
+        document.getElementById('studyNote').value = '';
 
         updateMaterialSuggestions(); // サジェストを更新
     } else {
