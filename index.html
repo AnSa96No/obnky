@@ -4,6 +4,8 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- CSS -->
     <link rel="stylesheet" href="./custom.css">
     <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
@@ -68,6 +70,11 @@
             <input type="number" autocomplete="off" class="form-control" id="studyTime" placeholder="勉強時間を入力">
         </div>
 
+        <!-- 計測画面に遷移 -->
+        <div class="mb-3">
+            <a href="./pages/count.html" class="btn btn-primary">計測</a>
+        </div>
+
         <!-- 教材ごとのメモの入力 -->
         <div class="mb-3">
             <label for="studyNote" class="form-label">メモ</label>
@@ -79,9 +86,13 @@
 
     </div>
 
+
+
     <!-- Javascript -->
     <script src="./main.js"></script>
+    <script src="./functions.js"></script>
     <script src="./lib/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
