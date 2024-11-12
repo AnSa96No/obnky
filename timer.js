@@ -9,57 +9,59 @@ let timerInterval;
 const startButton = document.getElementById("instrumentation_start");
 const suspendButton = document.getElementById("suspend");
 
-// 分秒表示を更新する関数
+// 時分秒の表示関数
 function updateDisplayTime() {
-    const minutes = Math.floor(elapsedTime / 60000); // 分
-    const seconds = Math.floor((elapsedTime % 60000) / 1000); // 秒
-    document.getElementById("study_time").textContent = `${minutes}分${seconds}秒`;
-}
+    const totalSeconds = Math.floor(elapsedTime / 1000); // 経過時間を秒単位に
+    const hours = Math.floor(totalSeconds / 3600); // 時間
+    const minutes = Math.floor((totalSeconds % 3600) / 60); // 分
+    const seconds = totalSeconds % 60; // 秒
 
-// ボタンのスタイルをリセットする関数
-function resetButtonStyles() {
-    startButton.classList.remove("btn-success");
-    suspendButton.classList.remove("btn-success");
-    startButton.classList.add("btn-primary");
-    suspendButton.classList.add("btn-primary");
+    // 時分秒の形式で表示
+    document.getElementById("study_time").textContent = `${hours}時間${minutes}分${seconds}秒`;
 }
 
 // 計測開始ボタン
-startButton.addEventListener("click", () => {
-    console.log("計測開始");
+document.getElementById("instrumentation_start").addEventListener("click", () => {
     if (!timerInterval) {
         startTime = Date.now() - elapsedTime;
         timerInterval = setInterval(() => {
             elapsedTime = Date.now() - startTime;
             updateDisplayTime();
         }, 1000);
-
-        resetButtonStyles();
-        startButton.classList.remove("btn-primary");
-        startButton.classList.add("btn-success");
     }
+
+    resetButtonStyles();
+    startButton.classList.remove("btn-primary");
+    startButton.classList.add("btn-info");
 });
 
 // 一時停止ボタン
-suspendButton.addEventListener("click", () => {
-    console.log("一時停止");
-    if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
+document.getElementById("suspend").addEventListener("click", () => {
+    clearInterval(timerInterval);
+    timerInterval = null;
 
-        resetButtonStyles();
-        suspendButton.classList.remove("btn-primary");
-        suspendButton.classList.add("btn-success");
-    }
+    resetButtonStyles();
+    suspendButton.classList.remove("btn-primary");
+    suspendButton.classList.add("btn-info");
 });
 
 // 計測終了ボタン
 document.getElementById("instrumentation_end").addEventListener("click", () => {
     clearInterval(timerInterval);
-    const minutes = Math.floor(elapsedTime / 60000); // 分単位に変換
-    localStorage.setItem("studyTime", minutes); // 分のみを保存
+
+    // 経過時間を分に変換して保存
+    const totalMinutes = Math.floor(elapsedTime / 60000); // 分単位に変換
+    localStorage.setItem("studyTime", totalMinutes); // 分のみを保存
+
+    // タイマーリセット
     elapsedTime = 0;
     startTime = null;
-
-    resetButtonStyles();
 });
+
+// ボタンのスタイルをリセットする関数
+function resetButtonStyles() {
+    startButton.classList.remove("btn-info");
+    suspendButton.classList.remove("btn-info");
+    startButton.classList.add("btn-primary");
+    suspendButton.classList.add("btn-primary");
+}
