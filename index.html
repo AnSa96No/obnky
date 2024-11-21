@@ -57,7 +57,7 @@
 
         <!-- 勉強教材の入力 -->
         <div class="mb-3">
-            <label for="studyMaterial" class="form-label txtop">勉強教材</label>
+            <label for="studyMaterial" class="form-label mt-4">勉強教材</label>
             <input type="text" class="form-control" id="studyMaterial" list="studyMaterialSuggestions" placeholder="勉強している教材名を入力">
             <datalist id="studyMaterialSuggestions">
                 <!-- サジェスト候補がJavaScriptで追加される -->
@@ -86,10 +86,20 @@
 
     </div>
 
+    <footer class="fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">Var.0.0</span>
+        </div>
+    </footer>
 
     <!-- Javascript -->
-    <script src="./main.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./lib/js/bootstrap.min.js"></script>
+
+
 
 </body>
 
