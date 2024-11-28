@@ -24,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
             listItem.classList.add("list-group-item");
             listItem.innerHTML = `
                 <div class="d-flex justify-content-between align-items-center">
-                    <div>
+                    <div class="container">
                         <input type="checkbox" class="form-check-input me-2" data-index="${index}" ${todo.completed ? "checked" : ""}>
                         <strong>${todo.title}</strong>
-                        <p class="mb-0 memostyle">${todo.description}</p>
+                        <p class="mb-0">${todo.description}</p>
                     </div>
                     <button class="btn btn-outline-dark btn-sm edit-btn" data-index="${index}">編集</button>
                 </div>
