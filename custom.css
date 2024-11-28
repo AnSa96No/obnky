@@ -14,10 +14,19 @@
     font-size: 20px;
 }
 
-.delete-btn {
+.delete-btn{
+    float: right; /* ボタンを右寄せ */
+}
+
+.edit_btn{
     float: right; /* ボタンを右寄せ */
 }
 
 #clearAllRecords{
     float: right;
 }
+
+#deleteTodoBtn {
+    float: left;
+}
+

@@ -118,6 +118,7 @@ function addRecordToHistory(record) {
 // ローカルストレージから勉強履歴を読み込み、表示する関数
 function loadRecords() {
     const storedRecords = localStorage.getItem('studyRecords');
+
     if (storedRecords) {
         const studyRecords = JSON.parse(storedRecords);
 

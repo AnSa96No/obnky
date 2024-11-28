@@ -41,32 +41,35 @@ document.getElementById("clearAllRecords").addEventListener("click", () => {
 document.getElementById("historyList").addEventListener("click", (e) => {
     if (e.target.classList.contains("delete-btn")) {
         const listItem = e.target.closest("li");
-        const material = listItem.dataset.material.trim(); // 教材名（余分な空白を除去）
+        const material = listItem.dataset.material; // 教材名
         const time = parseInt(listItem.dataset.time); // 勉強時間
 
-        // ローカルストレージからデータを取得
-        let storedRecords = JSON.parse(localStorage.getItem("studyRecords")) || [];
+        // 確認ダイアログの表示
+        const isConfirmed = confirm(`"${material}" (${time}分) を削除しますか？`);
+        if (!isConfirmed) {
+            return; // ユーザーがキャンセルした場合、削除を中断
+        }
 
-        // 削除対象を除外した新しいデータを生成
-        storedRecords = storedRecords.filter(
-            record => !(record.material.trim() === material && record.time === time)
+        // ローカルストレージから該当の記録を削除
+        const storedRecords = JSON.parse(localStorage.getItem("studyRecords")) || [];
+        const updatedRecords = storedRecords.filter(
+            record => !(record.material === material && record.time === time)
         );
 
         // ローカルストレージを更新
-        localStorage.setItem("studyRecords", JSON.stringify(storedRecords));
+        localStorage.setItem("studyRecords", JSON.stringify(updatedRecords));
 
         // 表示から削除
         listItem.remove();
+        alert("選択した履歴が削除されました。");
 
         // 初期の合計時間とメーターを更新
         updateTotalTimeAndMeter();
 
-        alert("選択した履歴が削除されました。");
     }
 });
 
 // 初期ロード時に履歴とメーターを表示
 document.addEventListener('DOMContentLoaded', () => {
-    // loadRecords(); // 履歴の読み込みと表示
     updateTotalTimeAndMeter(); // 初期の合計時間とメーターを更新
 });
