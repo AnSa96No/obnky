@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="container">
                         <input type="checkbox" class="form-check-input me-2" data-index="${index}" ${todo.completed ? "checked" : ""}>
-                        <strong>${todo.title}</strong>
-                        <p class="mb-0">${todo.description}</p>
+                        <strong class="txt-line">${todo.title}</strong>
+                        <p class="mb-0 txt-line">${todo.description}</p>
+                        <button class="btn btn-outline-dark edit-btn" data-index="${index}">編集</button>
                     </div>
-                    <button class="btn btn-outline-dark btn-sm edit-btn" data-index="${index}">編集</button>
                 </div>
             `;
             todoList.appendChild(listItem);
