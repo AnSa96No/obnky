@@ -15,11 +15,15 @@
 }
 
 .delete-btn{
-    float: right; /* ボタンを右寄せ */
+    float: right;
 }
 
 .edit_btn{
-    float: right; /* ボタンを右寄せ */
+    float: right;
+}
+
+.edit-btn{
+    float: right;
 }
 
 #clearAllRecords{
@@ -30,3 +34,11 @@
     float: left;
 }
 
+#todo-m{
+    margin-top: 80px;
+}
+
+.txt-line{
+    inline-size: auto;
+    overflow-wrap: break-word;
+}
